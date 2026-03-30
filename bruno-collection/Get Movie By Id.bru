@@ -1,0 +1,19 @@
+meta {
+  name: Get Movie By Id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/movies/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 1
+}
+
+settings {
+  encodeUrl: true
+}

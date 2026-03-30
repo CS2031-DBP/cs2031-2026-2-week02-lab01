@@ -1,0 +1,22 @@
+meta {
+  name: Create Movie
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/movies
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Nueva Película",
+    "releaseDate": "2025-07-25"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

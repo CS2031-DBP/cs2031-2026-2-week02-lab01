@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "cs2031-2025-2-week02-lab01",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

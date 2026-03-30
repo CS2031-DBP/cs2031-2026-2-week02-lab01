@@ -1,0 +1,23 @@
+meta {
+  name: Update Movie Release Date
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseUrl}}/movies/:id/release-date?date=2003-10-11
+  body: none
+  auth: inherit
+}
+
+params:query {
+  date: 2003-10-11
+}
+
+params:path {
+  id: 1
+}
+
+settings {
+  encodeUrl: true
+}
