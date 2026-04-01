@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "cs2031-2026-1-week02-lab01",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API REST de gestión de películas - CS2031 Week 02 Lab 01"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Movie",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/movies",
+          "host": ["{{baseUrl}}"],
+          "path": ["movies"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Nueva Película\",\n  \"releaseDate\": \"2025-07-25\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Get All Movies",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/movies",
+          "host": ["{{baseUrl}}"],
+          "path": ["movies"]
+        }
+      }
+    },
+    {
+      "name": "Get Movie By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/movies/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["movies", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Movie",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/movies/6",
+          "host": ["{{baseUrl}}"],
+          "path": ["movies", "6"]
+        }
+      }
+    },
+    {
+      "name": "Update Movie Release Date",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/movies/1/release-date?date=2003-10-11",
+          "host": ["{{baseUrl}}"],
+          "path": ["movies", "1", "release-date"],
+          "query": [
+            {
+              "key": "date",
+              "value": "2003-10-11"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
