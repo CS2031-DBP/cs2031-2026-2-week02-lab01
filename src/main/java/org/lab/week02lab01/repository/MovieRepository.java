@@ -12,8 +12,12 @@ import java.util.List;
 @Repository
 public class MovieRepository {
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    public MovieRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<Movie> findAll() {
         String sqlQuery = "SELECT * FROM movies";
