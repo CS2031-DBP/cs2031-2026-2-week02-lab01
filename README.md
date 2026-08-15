@@ -45,7 +45,9 @@ En la raíz del proyecto encontrarás el archivo `postman-collection.json`. Imp�
 
 La API estará disponible en `http://localhost:8080`.
 
-La consola de H2 está habilitada y accesible en `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:file:./data/devdb`).
+La consola de H2 está habilitada y accesible en `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:week02-lab01`).
+
+> La base de datos es **en memoria pura**: los datos se reinician cada vez que la aplicación se reinicia (ya no persiste en un archivo en disco).
 
 ---
 
@@ -156,7 +158,7 @@ Cada clase declara sus dependencias como parámetros del constructor y Spring la
 
 ### Base de datos
 
-Se usa **H2** como base de datos en memoria con persistencia en archivo (`./data/devdb`). Al iniciar la aplicación, Hibernate recrea el esquema y Spring ejecuta `import.sql` para insertar los datos de ejemplo:
+Se usa **H2** como base de datos en memoria (`jdbc:h2:mem:week02-lab01`), sin persistencia en disco. Al iniciar la aplicación, Hibernate recrea el esquema y Spring ejecuta `import.sql` para insertar los datos de ejemplo:
 
 | ID | Título | Fecha | External ID |
 |----|--------|-------|-------------|
@@ -169,8 +171,8 @@ Se usa **H2** como base de datos en memoria con persistencia en archivo (`./data
 
 ### Stack tecnológico
 
-- **Java 21**
-- **Spring Boot 3.5.5** (Web, Data JPA)
+- **Java 26**
+- **Spring Boot 4.1.0** (Web, Data JPA, RestClient)
 - **H2** (base de datos en memoria)
 - **JdbcTemplate** (acceso a datos manual)
 - **RestTemplate** (cliente HTTP para SWAPI)

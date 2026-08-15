@@ -2,6 +2,7 @@ package org.lab.week02lab01.repository;
 
 import org.lab.week02lab01.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,16 +30,20 @@ public class MovieRepository {
 
     public Movie findById(long id) {
         String sqlQuery = "SELECT * FROM movies WHERE id = ?";
-        return jdbcTemplate.queryForObject(sqlQuery, new Object[]{id}, (resultSet, rowNum) -> {
-            Movie movie = new Movie();
-            movie.setId(resultSet.getLong("id"));
-            movie.setTitle(resultSet.getString("title"));
-            movie.setReleaseDate(resultSet.getDate("release_date"));
+        try {
+            return jdbcTemplate.queryForObject(sqlQuery, new Object[]{id}, (resultSet, rowNum) -> {
+                Movie movie = new Movie();
+                movie.setId(resultSet.getLong("id"));
+                movie.setTitle(resultSet.getString("title"));
+                movie.setReleaseDate(resultSet.getDate("release_date"));
 
-            Long externalId = resultSet.getObject("external_id", Long.class);
-            movie.setExternalId(externalId);
-            return movie;
-        });
+                Long externalId = resultSet.getObject("external_id", Long.class);
+                movie.setExternalId(externalId);
+                return movie;
+            });
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public int save(Movie movie) {
